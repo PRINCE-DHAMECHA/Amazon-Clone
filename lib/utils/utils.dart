@@ -10,23 +10,26 @@ class Utils {
   }
 
   showSnackBar({required BuildContext context, required String content}) {
+    content = content.substring(0,56);
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         backgroundColor: Colors.orange,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(10),
-            topRight: Radius.circular(10),
+            topLeft: Radius.circular(5),
+            topRight: Radius.circular(5),
           ),
         ),
         content: SizedBox(
           width: getScreenSize().width,
+          height: 20,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 content,
                 maxLines: 2,
+                // overflow: TextOverflow.fade,
                 overflow: TextOverflow.ellipsis,
               ),
             ],

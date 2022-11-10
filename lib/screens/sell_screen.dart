@@ -4,6 +4,7 @@ import 'package:amazon_clone/model/product_model.dart';
 import 'package:amazon_clone/providers/user_details_provider.dart';
 import 'package:amazon_clone/resources/cloudfirestore_methods.dart';
 import 'package:amazon_clone/utils/color_themes.dart';
+import 'package:amazon_clone/utils/constants.dart';
 import 'package:amazon_clone/utils/utils.dart';
 import 'package:amazon_clone/widgets/custom_main_button.dart';
 import 'package:amazon_clone/widgets/loading_widget.dart';
@@ -25,14 +26,17 @@ class _SellScreenState extends State<SellScreen> {
   Uint8List? image;
   TextEditingController nameController = TextEditingController();
   TextEditingController costController = TextEditingController();
+  // TextEditingController catageoryController = TextEditingController();
   List<int> keysForDiscount = [0, 70, 60, 50];
   //keysofdiscoutn[selected -1]
-
+  String dropdownValue = "Fashion";
+  var items = categoriesList;
   @override
   void dispose() {
     super.dispose();
     nameController.dispose();
     costController.dispose();
+    // catageoryController.dispose();
   }
 
   @override
@@ -48,7 +52,7 @@ class _SellScreenState extends State<SellScreen> {
                 width: screenSize.width,
                 child: Padding(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                   child: Center(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -78,8 +82,38 @@ class _SellScreenState extends State<SellScreen> {
                           ],
                         ),
                         Container(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              DropdownButton(
+
+                                // Initial Value
+                                value: dropdownValue,
+
+                                // Down Arrow Icon
+                                icon: const Icon(Icons.keyboard_arrow_down),
+
+                                // Array list of items
+                                items: items.map((String items) {
+                                  return DropdownMenuItem(
+                                    value: items,
+                                    child: Text(items),
+                                  );
+                                }).toList(),
+                                // After selecting the desired option,it will
+                                // change button value to selected value
+                                onChanged: (String? newValue) {
+                                  setState(() {
+                                    dropdownValue = newValue!;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 35, vertical: 10),
+                              horizontal: 35, vertical: 5),
                           height: screenSize.height * 0.7,
                           width: screenSize.width * 0.7,
                           decoration: BoxDecoration(
@@ -179,7 +213,9 @@ class _SellScreenState extends State<SellScreen> {
                                               .userDetails
                                               .name,
                                       sellerUid: FirebaseAuth
-                                          .instance.currentUser!.uid);
+                                          .instance.currentUser!.uid,
+                                      category: dropdownValue,
+                              );
                               if (output == "success") {
                                 Utils().showSnackBar(
                                     context: context,

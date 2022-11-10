@@ -43,12 +43,13 @@ class CloudFirestoreClass {
     required int discount,
     required String sellerName,
     required String sellerUid,
+    required String category,
   }) async {
     productName.trim();
     rawCost.trim();
     String output = "Something went wrong";
 
-    if (image != null && productName != "" && rawCost != "") {
+    if (image != null && productName != "" && rawCost != "" && category != "") {
       try {
         String uid = Utils().getUid();
         String url = await uploadImageToDatabase(image: image, uid: uid);
@@ -63,7 +64,9 @@ class CloudFirestoreClass {
             sellerName: sellerName,
             sellerUid: sellerUid,
             rating: 5,
-            noOfRating: 0);
+            noOfRating: 0,
+            category: category,
+        );
 
         await firebaseFirestore
             .collection("products")

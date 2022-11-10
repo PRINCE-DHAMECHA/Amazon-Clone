@@ -90,7 +90,9 @@ class CartItemWidget extends StatelessWidget {
                               sellerName: product.sellerName,
                               sellerUid: product.sellerUid,
                               rating: product.rating,
-                              noOfRating: product.noOfRating));
+                              noOfRating: product.noOfRating,
+                              category: product.category,
+                          ));
                     },
                     color: backgroundColor,
                     dimension: 40),

@@ -3,6 +3,7 @@ import 'package:amazon_clone/model/product_model.dart';
 import 'package:amazon_clone/model/user_details_model.dart';
 import 'package:amazon_clone/providers/user_details_provider.dart';
 import 'package:amazon_clone/screens/sell_screen.dart';
+import 'package:amazon_clone/screens/sign_in_screen.dart';
 import 'package:amazon_clone/utils/color_themes.dart';
 import 'package:amazon_clone/utils/constants.dart';
 import 'package:amazon_clone/utils/utils.dart';
@@ -38,7 +39,7 @@ class _AccountScreenState extends State<AccountScreen> {
             children: [
               IntroductionWidgetAccountScreen(),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(6.0),
                 child: CustomMainButton(
                     child: const Text(
                       "Sign Out",
@@ -48,10 +49,14 @@ class _AccountScreenState extends State<AccountScreen> {
                     isLoading: false,
                     onPressed: () {
                       FirebaseAuth.instance.signOut();
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) =>
+                          const SignInScreen()),
+                      );
                     }),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(6.0),
                 child: CustomMainButton(
                     child: const Text("Sell",
                         style: TextStyle(color: Colors.black)),
@@ -87,12 +92,12 @@ class _AccountScreenState extends State<AccountScreen> {
                     }
                   }),
               const Padding(
-                padding: EdgeInsets.all(15),
+                padding: EdgeInsets.all(10),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
                     "Order Requests",
-                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),

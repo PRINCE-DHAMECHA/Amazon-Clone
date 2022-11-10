@@ -79,7 +79,9 @@ List<Widget> testChildren = [
         sellerName: "Rick Seller",
         sellerUid: "983498ihjb",
         rating: 1,
-        noOfRating: 1),
+        noOfRating: 1,
+        category: categoriesList[0],
+    ),
   ),
   SimpleProductWidget(
     productModel: ProductModel(
@@ -91,7 +93,9 @@ List<Widget> testChildren = [
         sellerName: "Rick Seller",
         sellerUid: "983498ihjb",
         rating: 1,
-        noOfRating: 1),
+        noOfRating: 1,
+      category: categoriesList[1],
+    ),
   ),
   SimpleProductWidget(
     productModel: ProductModel(
@@ -103,7 +107,9 @@ List<Widget> testChildren = [
         sellerName: "Rick Seller",
         sellerUid: "983498ihjb",
         rating: 1,
-        noOfRating: 1),
+        noOfRating: 1,
+        category: categoriesList[2],
+    ),
   ),
   SimpleProductWidget(
     productModel: ProductModel(
@@ -115,7 +121,9 @@ List<Widget> testChildren = [
         sellerName: "Rick Seller",
         sellerUid: "983498ihjb",
         rating: 1,
-        noOfRating: 1),
+        noOfRating: 1,
+        category: categoriesList[3],
+    ),
   ),
   SimpleProductWidget(
     productModel: ProductModel(
@@ -127,7 +135,9 @@ List<Widget> testChildren = [
         sellerName: "Rick Seller",
         sellerUid: "983498ihjb",
         rating: 1,
-        noOfRating: 1),
+        noOfRating: 1,
+        category: categoriesList[4],
+    ),
   )
 ];
 

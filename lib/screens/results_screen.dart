@@ -45,7 +45,7 @@ class ResultsScreen extends StatelessWidget {
               child: FutureBuilder(
                   future: FirebaseFirestore.instance
                       .collection("products")
-                      .where("productName", isEqualTo: query)
+                      .where('category', isEqualTo: query)
                       .get(),
                   builder: (context,
                       AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>>
